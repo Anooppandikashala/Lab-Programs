@@ -1,13 +1,52 @@
+/*
+push() 
+  |   pop()
+  |    ^
+  |    |
+  |    |
+  v    |
+|_______|6  <------ top
+|_______|5
+|_______|4
+|_______|3
+|_______|2
+|_______|1
+|_______|0
+        -1 <------- stack empty
+
+*/
 #include<stdio.h>
-#define max 100
 #include<stdlib.h>
+#define max 100
 
 int stackArray[max];
-int top=-1;
+int top=-1;//set top -1; stack is empty
+
+//not used in this program
+int isEmpty()
+{
+    if(-1 != top)
+    {
+        return 0;//return 0, if stack is not empty
+    }
+    return 1; //return 1, if stack is not empty
+    
+}
+
+//not used in this program
+void print()
+{
+    int i;
+    printf("\n");
+    for(i = 0 ; i <= top ; i++)
+    {
+        printf("\t%d", stackArray[i]);
+    }
+}
 
 int push(int data)
 {
-    if(top == max-1)
+    if(max-1 == top) //avoid accidently assignment
     {
         return 0;
     }
@@ -22,9 +61,10 @@ int push(int data)
 
 int pop()
 {
-    if(top == -1)
+    if(-1 == top)//avoid accidently assignment
     {
-        printf("Under flow");
+        printf("Under flow : Stack is empty");
+        return -1;
     }
     else
     {
@@ -34,8 +74,6 @@ int pop()
     }
     
 }
-
-
 
 int main()
 {
@@ -52,7 +90,7 @@ int main()
             int num;
             scanf("%d",&num);
             num = push(num);
-            if(num == 1)
+            if(1 == num)//avoid accidently assignment
             {
                 printf("\nsuccess !");
             }
@@ -67,7 +105,10 @@ int main()
         case 2:
         {
             int num = pop();
-            printf("\nPoped element = %d ",num);
+            if(-1 != num)//avoid accidently assignment
+            {
+                printf("\nPoped element = %d ",num);
+            }            
             break;
         }        
         default:
