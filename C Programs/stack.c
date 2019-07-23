@@ -42,23 +42,23 @@ int main()
     int key;
     do
     {
-        printf("\nenter a selection ");
+        printf("\nEnter a selection \n\t1. Push\n\t2.Pop\n\tAny other Number to Exit : ");
         scanf("%d",&key);
         switch (key)
         {
         case 1:
         {
-            printf("\nenter a element");
+            printf("\nenter a element : ");
             int num;
             scanf("%d",&num);
             num = push(num);
             if(num == 1)
             {
-                printf("\nsuccess");
+                printf("\nsuccess !");
             }
             else
             {
-                printf("\nfail");
+                printf("\nfail !");
             }
             
             break;
@@ -67,7 +67,7 @@ int main()
         case 2:
         {
             int num = pop();
-            printf("\nPoped element = %d",num);
+            printf("\nPoped element = %d ",num);
             break;
         }        
         default:
@@ -76,8 +76,6 @@ int main()
         }
     } while (1);
     
-
-
 
     return 0;
 }
